@@ -1,0 +1,67 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":labels(dependencies, chore)",
+    ":maintainLockFilesWeekly",
+    ":widenPeerDependencies",
+    ":pinDevDependencies",
+    ":semanticCommitTypeAll(chore)",
+    "group:allNonMajor"
+  ],
+  "npm": {
+    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
+  },
+  "schedule": ["on Monday"],
+  "packageRules": [
+    {
+      "description": "Use update-lockfile strategy for production dependencies",
+      "matchDepTypes": ["dependencies"],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "description": "Group test packages updates",
+      "extends": ["packages:test"],
+      "groupName": "test packages"
+    },
+    {
+      "description": "Group linter packages updates",
+      "extends": ["packages:linters"],
+      "groupName": "all linters"
+    },
+    {
+      "description": "Group build tool updates",
+      "matchPackagePatterns": [
+        "^rollup",
+        "^webpack",
+        "^babel",
+        "^esbuild",
+        "^parcel",
+        "^tsup",
+        "^tsdown",
+        "^@rspack"
+      ],
+      "groupName": "build tools"
+    },
+    {
+      "description": "Group TypeScript-related updates",
+      "matchPackagePatterns": [
+        "^@types/",
+        "typescript",
+        "^ts-"
+      ],
+      "groupName": "typescript"
+    },
+    {
+      "description": "Group ESLint and other linters updates",
+      "matchPackagePatterns": [
+        "^eslint",
+        "^@typescript-eslint/",
+        "^@biomejs/biome",
+        "oxlint",
+        "^@antfu/eslint-config"
+      ],
+      "groupName": "linters"
+    }
+  ]
+}

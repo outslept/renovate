@@ -1,0 +1,16 @@
+{
+  "name": "renovate",
+  "version": "0.1.0",
+  "description": "Preset for Renovate",
+  "license": "MIT",
+  "homepage": "https://github.com/outslept/renovate",
+  "scripts": {
+    "validate": "renovate-config-validator",
+    "test": "pnpm validate",
+    "prepare": "pnpm test"
+  },
+  "devDependencies": {
+    "renovate": "latest"
+  },
+  "packageManager": "pnpm@10.10.0"
+}
