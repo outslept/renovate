@@ -1,4 +1,4 @@
-# Renovate Nuxt Configs
+# Renovate Config
 
 Preset for [Renovate](https://github.com/renovatebot/renovate).
 
